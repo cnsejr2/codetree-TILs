@@ -19,16 +19,16 @@ public class Main {
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
 		
-		arr = new int[n][n];
+		arr = new int[n][m];
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
-			for (int j = 0; j < n; j++) {
+			for (int j = 0; j < m; j++) {
 				arr[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
 		
 		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
+			for (int j = 0; j < m; j++) {
 				check1(i, j);
 				check2(i, j);
 			}
@@ -45,7 +45,7 @@ public class Main {
 			result = Math.max(result, sum);
 		}
 		
-		if (y + 1 < n && y + 2 < n) {
+		if (y + 1 < m && y + 2 < m) {
 			int sum = arr[x][y] + arr[x][y + 1] + arr[x][y + 2];
 			result = Math.max(result, sum);
 		}
