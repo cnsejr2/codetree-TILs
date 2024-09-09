@@ -61,8 +61,8 @@ public class Main {
 			int nx2 = x + c1[i][1][0];
 			int ny2 = y + c1[i][1][1];
 			
-			if (nx1 >= 0 && nx1 < n && ny1 >= 0 && ny1 < n
-			 && nx2 >= 0 && nx2 < n && ny2 >= 0 && ny2 < n) {
+			if (nx1 >= 0 && nx1 < n && ny1 >= 0 && ny1 < m
+			 && nx2 >= 0 && nx2 < n && ny2 >= 0 && ny2 < m) {
 				int sum = arr[x][y] + arr[nx1][ny1] + arr[nx2][ny2];
 				
 				result = Math.max(result, sum);
