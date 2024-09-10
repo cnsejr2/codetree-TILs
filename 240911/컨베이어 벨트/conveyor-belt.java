@@ -18,7 +18,9 @@ public class Main {
             for (int j = n * 2 - 1; j > 0; j--) {
                 arr[j] = arr[j - 1];
             }
+            arr[0] = temp;
         }
+    
 
         for (int i = 0; i < n * 2; i++) {
             if (i % n == 0 && i > 0) {
