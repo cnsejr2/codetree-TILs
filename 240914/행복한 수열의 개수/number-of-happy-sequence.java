@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    
     public static void main(String[] args) throws IOException {
         // 여기에 코드를 작성해주세요.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,6 +26,9 @@ public class Main {
             	if (arr[i][j] == arr[i][j + 1]) {
             		cnt++;
             	} else {
+            		if (cnt >= m) {
+            			sum++;
+            		}
             		cnt = 1;
             	}
             }
@@ -39,6 +43,9 @@ public class Main {
             	if (arr[j][i] == arr[j + 1][i]) {
             		cnt++;
             	} else {
+            		if (cnt >= m) {
+            			sum++;
+            		}
             		cnt = 1;
             	}
             }
