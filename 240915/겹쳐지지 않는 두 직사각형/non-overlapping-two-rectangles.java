@@ -48,8 +48,8 @@ public class Main {
 			for (int j2 = 0; j2 < m; j2++) {
 				for (int x2 = i2; x2 < n; x2++) {
 					for (int y2 = j2; y2 < m; y2++) {
-						if (chcekOverlapped(i1, j1, x1, y1, i2, y2, x2, y2)) {
-							max = Math.max(max, rect1 + getRectSum(i2, y2, x2, y2));
+						if (!chcekOverlapped(i2, j2, x2, y2, i1, j1, x1, y1)) {
+							max = Math.max(max, rect1 + getRectSum(i2, j2, x2, y2));
 						}
 					}
 				}
@@ -70,16 +70,16 @@ public class Main {
 		for (int i = i2; i <= x2; i++) {
 			for (int j = j2; j <= y2; j++) {
 				if (visit[i][j]) {
-					return false;
+					return true;
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 
 	private static int getRectSum(int i, int j, int x, int y) {
 		int sum = 0;
-		for (int a = i; a <=  x; a++) {
+		for (int a = i; a <= x; a++) {
 			for (int b = j; b <= y; b++) {
 				sum += map[a][b];
 			}
