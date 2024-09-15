@@ -43,7 +43,7 @@ public class Main {
 		int sum = 0;
 		for (int a = i; a <= x; a++) {
 			for (int b = j; b <= y; b++) {
-				if (map[a][b] < 0) {
+				if (map[a][b] <= 0) {
 					return -1;
 				} else {
 					sum++;
