@@ -46,8 +46,8 @@ public class Main {
 							flag = true;
 						}
 					}
-					cnt = 1;
 				}
+				cnt = 1;
 				s = i;
 				prev = arr[i];
 			} else {
