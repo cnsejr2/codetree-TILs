@@ -53,9 +53,6 @@ public class Main {
 					temp[tempEnd--] = map[j][i];
 				}
 			}
-			for (int j = tempEnd; j >= 1; j--) {
-				temp[j] = 0;
-			}
 
 			for (int j = 1; j <= n; j++) {
 				map[j][i] = temp[j];
