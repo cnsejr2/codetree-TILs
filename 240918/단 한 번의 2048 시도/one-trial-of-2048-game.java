@@ -46,6 +46,7 @@ public class Main {
 					}
 				}
 			}
+			map = temp;
 			for (int i = 0; i < 4; i++) {
 				int prev = map[i][0];
 				for (int j = 1; j < 4; j++) {
@@ -77,6 +78,7 @@ public class Main {
 					}
 				}
 			}
+			map = temp;
 			for (int i = 3; i >= 0; i--) {
 				int prev = map[i][3];
 				for (int j = 2; j >= 0; j--) {
@@ -108,6 +110,7 @@ public class Main {
 					}
 				}
 			}
+			map = temp;
 			for (int i = 0; i < 4; i++) {
 				int prev = map[0][i];
 				for (int j = 1; j < 4; j++) {
