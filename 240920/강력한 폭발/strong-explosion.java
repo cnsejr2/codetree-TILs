@@ -30,7 +30,7 @@ public class Main {
 		
 		n = Integer.parseInt(st.nextToken());
 		map = new int[n][n];
-		bomb = new int[n][2];
+		bomb = new int[n* n][2];
 		bombCnt = 0;
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
