@@ -35,14 +35,14 @@ public class Main {
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 0; j < n; j++) {
-				map[i][j] = Integer.parseInt(st.nextToken());
-				if (map[i][j] == 1) {
+				int num = Integer.parseInt(st.nextToken());
+				if (num == 1) {
 					bomb[bombCnt][0] = i;
 					bomb[bombCnt][1] = j;
 					bombCnt++;
-				} else {
-					map[i][j] = -1;
 				}
+				map[i][j] = -1;
+				
 			}
 		}
 		
@@ -73,6 +73,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		int x = bomb[depth][0];
 		int y = bomb[depth][1];
+		map[x][y] = -1;
 		
 		int[] newX = new int[4];
 		int[] newY = new int[4];
@@ -105,6 +106,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		int x = bomb[depth][0];
 		int y = bomb[depth][1];
+		map[x][y] = depth;
 		
 		int[] newX = new int[4];
 		int[] newY = new int[4];
