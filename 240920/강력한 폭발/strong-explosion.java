@@ -10,7 +10,6 @@ public class Main {
 	static int[][] map;
 	static int[][] bomb;
 	static int[] arr = { 1, 2, 3};
-	static ArrayList<Integer> list = new ArrayList<>();
 
 	static int[] oneX = { 2, 1, -1, -2};
 	static int[] oneY = { 0, 0, 0, 0};
@@ -60,10 +59,8 @@ public class Main {
 		}
 		
 		for (int i = 1; i <= 3; i++) {
-			list.add(i);
 			updateBomb(depth, i);
 			dupPerm(depth + 1, r);
-			list.remove(list.size() - 1);
 			removeBomb(depth, i);
 		}
 		
