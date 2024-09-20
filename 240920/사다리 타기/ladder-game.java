@@ -50,6 +50,16 @@ public class Main {
 			return;
 		}
 		
+		int[] line = lines.get(depth);
+		int a = line[0];
+		int b = line[1];
+		ladder[b][a] = 0;
+		ladder[b][a + 1] = 0;
+		go(depth + 1, cnt + 1);
+		ladder[b][a] = 1;
+		ladder[b][a + 1] = -1;
+		go(depth + 1, cnt);
+		
 	}
 
 	private static boolean sameResWith(int[] tmp) {
