@@ -8,6 +8,12 @@ public class Main {
 		
 		int n = sc.nextInt();
 		
+		if (n == 1 || n == 2) {
+            System.out.println(1);
+            sc.close();
+            return;
+        }
+		
 		int[] dp = new int[n + 1];
 		dp[1] = 1;
 		dp[2] = 1;
