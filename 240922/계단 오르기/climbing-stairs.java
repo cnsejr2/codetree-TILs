@@ -10,7 +10,7 @@ public class Main {
 		
 		int n = sc.nextInt();
 		dp = new int[n + 1];
-		System.out.println(check(n) % 10007);
+		System.out.println(check(n - 1) % 10007);
 
 		sc.close();
 
