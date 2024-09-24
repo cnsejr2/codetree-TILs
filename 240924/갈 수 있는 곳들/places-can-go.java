@@ -23,7 +23,6 @@ public class Main {
 	static int n;
 	static int[][] map;
 	static int[][] visit;
-	static Queue<Pair> q = new LinkedList<>();
 	static int result;
 	
 	public static void main(String[] args) throws IOException {
@@ -47,27 +46,36 @@ public class Main {
 			st = new StringTokenizer(br.readLine());
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
-			
-			push(x, y, i);
-			bfs(i);
+			bfs(x, y, i);
 			
 		}
 
 		System.out.println(result);
 	}
 
-	private static void bfs(int k) {
+	private static void bfs(int x, int y, int k) {
+		Queue<Pair> q = new LinkedList<>();
+		if (visit[x][y] == 0) {
+			result++;
+		}
+		visit[x][y] = k;
+		q.add(new Pair(x, y));
+
 		// TODO Auto-generated method stub
 		while (!q.isEmpty()) {
 			Pair cur = q.poll();
-			int x = cur.x; 
-			int y = cur.y;
+			int cx = cur.x; 
+			int cy = cur.y;
 			
 			for (int i = 0; i < 4; i++) {
-				int nx = x + dx[i];
-				int ny = y + dy[i];
+				int nx = cx + dx[i];
+				int ny = cy + dy[i];
 				if (canGo(nx, ny, k)) {
-					push(nx, ny, k);
+					if (visit[nx][ny] == 0) {
+						result++;
+					}
+					visit[nx][ny] = k;
+					q.add(new Pair(nx, ny));
 				}
 			}
 		}
@@ -83,16 +91,6 @@ public class Main {
 		}
 		
 		return false;
-	}
-
-	private static void push(int x, int y, int k) {
-		// TODO Auto-generated method stub
-		if (visit[x][y] == 0) {
-			result++;
-		}
-		visit[x][y] = k;
-		q.add(new Pair(x, y));
-		
 	}
 
 }
