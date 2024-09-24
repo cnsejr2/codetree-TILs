@@ -16,7 +16,7 @@ public class Main {
 
 	}
 	
-	static int n;
+	static int n, m;
 	static int[][] graph;
 	static boolean[][] visit;
 	static Queue<Pair> q = new LinkedList<>();
@@ -29,11 +29,12 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		n = Integer.parseInt(st.nextToken());
-		graph = new int[n + 1][n + 1];
-		visit = new boolean[n + 1][n + 1];
+		m = Integer.parseInt(st.nextToken());
+		graph = new int[n + 1][m + 1];
+		visit = new boolean[n + 1][m + 1];
 		for (int i = 1; i <= n; i++) {
 			st = new StringTokenizer(br.readLine());
-			for (int j = 1; j <= n; j++) {
+			for (int j = 1; j <= m; j++) {
 				graph[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
@@ -70,7 +71,7 @@ public class Main {
 
 	private static boolean canGo(int x, int y) {
 		// TODO Auto-generated method stub
-		if (x > 0 && x <= n && y > 0 && y <= n) {
+		if (x > 0 && x <= n && y > 0 && y <= m) {
 			if (!visit[x][y] && graph[x][y] == 1) {
 				return true;
 			}
