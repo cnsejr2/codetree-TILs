@@ -24,7 +24,7 @@ public class Main {
 	static int[][] map;
 	static int[][] visit;
 	static Queue<Pair> q = new LinkedList<>();
-	static int result = 0;
+	static int result;
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -42,7 +42,7 @@ public class Main {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
-		
+		result = 0;
 		for (int i = 1; i <= k; i++) {
 			st = new StringTokenizer(br.readLine());
 			int x = Integer.parseInt(st.nextToken());
@@ -52,15 +52,6 @@ public class Main {
 			bfs(i);
 			
 		}
-		
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= n; j++) {
-				if (visit[i][j] > 0) {
-					result++;
-				}
-			}
-		}
-	
 
 		System.out.println(result);
 	}
@@ -96,6 +87,9 @@ public class Main {
 
 	private static void push(int x, int y, int k) {
 		// TODO Auto-generated method stub
+		if (visit[x][y] == 0) {
+			result++;
+		}
 		visit[x][y] = k;
 		q.add(new Pair(x, y));
 		
