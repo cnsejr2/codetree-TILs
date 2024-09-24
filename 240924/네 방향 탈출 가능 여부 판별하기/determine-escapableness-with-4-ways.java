@@ -43,7 +43,7 @@ public class Main {
 		bfs();
 		
 		
-		System.out.println(visit[n][n] == true ? 1 : 0);
+		System.out.println(visit[n][m] == true ? 1 : 0);
 	}
 
 	private static void push(int x, int y) {
