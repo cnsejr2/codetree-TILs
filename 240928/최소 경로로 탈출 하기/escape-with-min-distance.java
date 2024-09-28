@@ -40,13 +40,6 @@ public class Main {
 		
 		bfs();
 		
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= n; j++) {
-				System.out.print(visit[i][j] + " ");
-			}
-			System.out.println();
-		}
-		
 		System.out.println(visit[n][m] == 0 ? -1 : visit[n][m] - 1);
 
 	}
