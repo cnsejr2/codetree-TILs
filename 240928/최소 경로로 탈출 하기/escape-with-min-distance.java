@@ -33,7 +33,7 @@ public class Main {
 		visit = new int[n + 1][m + 1];
 		for (int i = 1; i <= n; i++) {
 			st = new StringTokenizer(br.readLine());
-			for (int j = 1; j <= n; j++) {
+			for (int j = 1; j <= m; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
 		}
@@ -49,15 +49,13 @@ public class Main {
 		int[] dx = { -1, 0, 1, 0};
 		int[] dy = { 0, -1, 0, 1};
 		
-		int step = 0;
-		
 		q.add(new Pair(1, 1));
 		visit[1][1] = 1;
 		while (!q.isEmpty()) {
 			Pair cur = q.poll();
 			int x = cur.x;
 			int y = cur.y;
-			step++;
+
 			for (int i = 0; i < 4; i++) {
 				int nx = x + dx[i];
 				int ny = y + dy[i];
