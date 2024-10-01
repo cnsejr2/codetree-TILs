@@ -53,7 +53,11 @@ public class Main {
 				if (map[i][j] == 0) {
 					System.out.print(-1 + " ");
 				} else {
-					System.out.print(result[i][j] + " ");
+					if (result[i][j] == 0 && map[i][j] == 1) {
+						System.out.print(-2 + " ");
+					} else {
+						System.out.print(result[i][j] + " ");
+					}
 				}
 			}
 			System.out.println();
