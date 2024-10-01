@@ -22,7 +22,6 @@ public class Main {
 	static int[][] map;
 	static int[][] visit;
 	static int[][] result;
-	static Pair r;
 	static Queue<Pair> q = new ArrayDeque<>();
 	static ArrayList<Pair> start = new ArrayList<>();
 	
@@ -69,8 +68,7 @@ public class Main {
 			visit[cur.x][cur.y] = 1;
 			
 			bfs(cur.x, cur.y);
-			
-			result[cur.x][cur.y] = visit[r.x][r.y] - 1;
+
 			q = new ArrayDeque<>();
 			visit = new int[n + 1][n + 1];
 		}
@@ -81,7 +79,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		int[] dx = { -1, 0, 1, 0};
 		int[] dy = { 0, -1, 0, 1};
-		
+
 		while (!q.isEmpty()) {
 			Pair cur = q.poll();
 			
@@ -99,8 +97,7 @@ public class Main {
 							q.add(new Pair(nx, ny));
 						}
 						if (map[nx][ny] == 2) {
-							r = new Pair(nx, ny);
-							visit[nx][ny] = visit[x][y] + 1;
+							result[sx][sy] = visit[x][y];
 							return;
 						}
 					}
