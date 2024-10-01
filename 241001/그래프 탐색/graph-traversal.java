@@ -28,7 +28,7 @@ public class Main {
 		
 		dfs(1);
 		
-		System.out.println(cnt - 1);
+		System.out.println(cnt);
 		
 		sc.close();
 
@@ -36,7 +36,7 @@ public class Main {
 
 	private static void dfs(int v) {
 		// TODO Auto-generated method stub
-		for (int i = 1; i <= n; i++) {
+		for (int i = 2; i <= n; i++) {
 			if (map[v][i] == 1 && !visit[i]) {
 				visit[i] = true;
 				cnt++;
