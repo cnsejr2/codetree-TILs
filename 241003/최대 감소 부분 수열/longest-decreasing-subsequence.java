@@ -20,7 +20,6 @@ public class Main {
 					dp[i] = Math.max(dp[i], dp[j] + 1);
 				}
 			}
-			System.out.println();
 		}
 		
 		int answer = 0;
