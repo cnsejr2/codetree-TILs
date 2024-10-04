@@ -42,7 +42,7 @@ public class Main {
 		}
 		
 		for (int i = lastNum; i < n; i++) {
-			list.add(i);
+			list.add(arr[i]);
 			comb(i + 1, depth + 1);
 			list.remove(list.size() - 1);
 		}
