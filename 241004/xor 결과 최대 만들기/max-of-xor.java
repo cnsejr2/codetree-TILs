@@ -16,13 +16,13 @@ public class Main {
 		n = sc.nextInt();
 		m = sc.nextInt();
 		
-		arr = new int[n + 1];
-		for (int i = 1; i <= n; i++) {
+		arr = new int[n];
+		for (int i = 0; i < n; i++) {
 			arr[i] = sc.nextInt();
 		}
 		Arrays.sort(arr);
 		
-		comb(1, 0);
+		comb(0, 0);
 		
 		System.out.println(max);
 				
@@ -41,7 +41,7 @@ public class Main {
 			return;
 		}
 		
-		for (int i = lastNum; i <= n; i++) {
+		for (int i = lastNum; i < n; i++) {
 			list.add(i);
 			comb(i + 1, depth + 1);
 			list.remove(list.size() - 1);
