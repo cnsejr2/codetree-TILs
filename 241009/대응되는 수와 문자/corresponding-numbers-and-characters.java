@@ -6,34 +6,34 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
+Scanner sc = new Scanner(System.in);
 		
 		int n = sc.nextInt();
 		int m = sc.nextInt();
 		
-		HashMap<String, Integer> map = new HashMap<>();
+		HashMap<String, String> map = new HashMap<>();
 		for (int i = 1; i <= n; i++) {
 			String str = sc.next();
 			
-			map.put(str, i);
+			map.put(str, String.valueOf(i));
 		}
 		
 		for (int i = 0; i < m; i++) {
 			String str = sc.next();
-			
-			if (!Character.isDigit(str.charAt(0))) {
-				System.out.println(map.get(str));
-			} else {
-				for (Map.Entry<String, Integer> entry : map.entrySet()) {
-		            String key = entry.getKey();
-		            Integer value = entry.getValue();
-		            
-		            if (value == Integer.parseInt(str)) {
-		            	System.out.println(key);
-		            }
-		        }
-			}
-			
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+                
+                if (key.equals(str)) {
+                    System.out.println(value);
+                    break;
+                } else if (value.equals(str)) {
+                    System.out.println(key);
+                    break;
+                }
+          
+            }
+        
 		}
 		
 		sc.close();
