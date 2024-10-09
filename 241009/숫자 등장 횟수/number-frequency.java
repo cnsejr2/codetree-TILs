@@ -19,7 +19,7 @@ public class Main {
 
 		for (int i = 0; i < m; i++) {
 			int n1 = sc.nextInt();
-			System.out.print(map.get(n1) == null ? 0 : map.get(n1)+ " ");
+			System.out.print(map.get(n1) == null ? 0 + " " : map.get(n1)+ " ");
 		}
 		
 		
