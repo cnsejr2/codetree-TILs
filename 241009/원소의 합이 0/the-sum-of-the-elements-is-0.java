@@ -33,9 +33,11 @@ public class Main {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				for (int k = 0; k < n; k++) {
-					long sum = a.get(i) + b.get(j) + c.get(k);
-					if (d.containsValue(sum * -1)) {
-						cnt++;
+					for (int l = 0; l < n; l++) {
+						long sum = a.get(i) + b.get(j) + c.get(k) + d.get(l);
+						if (sum == 0) {
+							cnt++;
+						}
 					}
 				}
 			}
