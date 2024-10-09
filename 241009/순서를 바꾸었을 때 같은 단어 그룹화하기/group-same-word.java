@@ -1,35 +1,38 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Arrays;
 
 public class Main {
+    // 변수 선언
+    public static int n;
+    public static HashMap<String, Integer> wordMap = new HashMap<>();
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		
-		int n = sc.nextInt();
-		HashMap<String, Integer> map = new HashMap<>();
-		
-		for (int i = 0; i < n; i++) {
-			String str = sc.next();
-			
-			char[] word = str.toCharArray();
-			Arrays.sort(word);
-			str = new String(word);
-			
-			map.put(str, map.getOrDefault(str, 0) + 1);
-		}
-		
-		List<String> keySet = new ArrayList<>(map.keySet());
-		keySet.sort((o1, o2) -> map.get(o2).compareTo(map.get(o1)));
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // 입력
+        n = sc.nextInt();
 
-		System.out.println(map.get(keySet.get(0)));
-		sc.close();
-		
-	}
+        // 입력 문자열을 정렬한 뒤 map에 저장해줍니다.
+        for(int i = 0; i < n; i++){
+            String inputStr = sc.next();
 
+            // java는 String 형태에서 정렬할 수 없기 때문에, 배열로 바꾸어 정렬해줍니다.
+            char tempArray[] = inputStr.toCharArray();
+            Arrays.sort(tempArray);
+            inputStr = new String(tempArray);
+            
+            if(!wordMap.containsKey(inputStr))
+                wordMap.put(inputStr, 1);
+            else
+                wordMap.put(inputStr, wordMap.get(inputStr) + 1);
+        }
+
+        // map을 순회하며 최대인 경우를 출력해줍니다.
+        int maxVal = 0;
+        for(String key : wordMap.keySet()) {
+            maxVal = Math.max(maxVal, wordMap.get(key));
+        }
+
+        System.out.print(maxVal);
+    }
 }
