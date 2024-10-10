@@ -10,19 +10,19 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		int n = sc.nextInt();
-		TreeMap<String, Integer> map = new TreeMap<>();
+		TreeMap<Long, Integer> map = new TreeMap<>();
 		
 		int j = 1;
 		for (int i = 0; i < n; i++) {
-			String s = sc.next();
+			Long s = sc.nextLong();
 			if (!map.containsKey(s)) {
 				map.put(s, j++);
 			}
 		}
-		Iterator<Entry<String, Integer>> it = map.entrySet().iterator();
+		Iterator<Entry<Long, Integer>> it = map.entrySet().iterator();
 
 		while (it.hasNext()) {
-			Entry<String, Integer> entry = it.next();
+			Entry<Long, Integer> entry = it.next();
 			System.out.println(entry.getKey() + " " + entry.getValue());
 		}
 		System.out.println();
