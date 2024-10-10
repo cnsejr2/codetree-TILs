@@ -11,12 +11,11 @@ public class Main {
 		
 		int n = sc.nextInt();
 		TreeMap<Long, Integer> map = new TreeMap<>();
-		
-		int j = 1;
-		for (int i = 0; i < n; i++) {
+
+		for (int i = 1; i <= n; i++) {
 			Long s = sc.nextLong();
 			if (!map.containsKey(s)) {
-				map.put(s, j++);
+				map.put(s, i);
 			}
 		}
 		Iterator<Entry<Long, Integer>> it = map.entrySet().iterator();
