@@ -1,16 +1,21 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
+        // Input
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
 
-        int n = sc.nextInt();
-        int k = sc.nextInt();
-
+        // 벡터를 리스트로 변환
         Set<Integer>[] v = new HashSet[n];
         for (int i = 0; i < n; i++) {
             v[i] = new HashSet<>();
@@ -25,8 +30,9 @@ public class Main {
         }
 
         for (int i = 0; i < k; i++) {
-            int a = sc.nextInt() - 1;
-            int b = sc.nextInt() - 1;
+            st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken()) - 1;
+            int b = Integer.parseInt(st.nextToken()) - 1;
             changes[i][0] = a;
             changes[i][1] = b;
         }
@@ -42,16 +48,18 @@ public class Main {
                 arr[a] = arr[b];
                 arr[b] = t;
 
+                // 거쳐간 자리 번호를 set에 저장 -> 중복 방지
                 v[arr[a]].add(a);
                 v[arr[b]].add(b);
             }
         }
 
+        // Output
         for (int i = 0; i < n; i++) {
-            System.out.println(v[i].size());
+            sb.append(v[i].size()).append('\n');
         }
 
-        sc.close();
-	}
-
+        // 결과 출력
+        System.out.print(sb);
+    }
 }
