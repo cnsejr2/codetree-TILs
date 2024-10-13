@@ -16,9 +16,9 @@ public class Main {
 			
 			if (str.equals("push")) {
 				int num = sc.nextInt();
-				pq.add(num);
+				pq.add(-num);
 			} else if (str.equals("pop")) {
-				System.out.println(pq.poll());
+				System.out.println(-pq.poll());
 			} else if (str.equals("size")) {
 				System.out.println(pq.size());
 			} else if (str.equals("empty")) {
@@ -28,7 +28,7 @@ public class Main {
 					System.out.println("0");
 				}
  			} else if (str.equals("top")) {
- 				System.out.println(pq.peek());
+ 				System.out.println(-pq.peek());
 			}
 			
 		}
