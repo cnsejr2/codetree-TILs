@@ -2,33 +2,27 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    static final int MAX_N = 100001;
-    static final int INF = Integer.MAX_VALUE / 2; // 큰 값 설정
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        int[] dp = new int[n + 1];
-        Arrays.fill(dp, INF); // dp 배열을 큰 값으로 초기화
-
-        dp[2] = 1;
-        dp[5] = 1;
-
-        for (int i = 0; i <= n; i++) {
-            if (i >= 2 && dp[i - 2] != INF) {
-                dp[i] = Math.min(dp[i], dp[i - 2] + 1);
-            }
-            if (i >= 5 && dp[i - 5] != INF) {
-                dp[i] = Math.min(dp[i], dp[i - 5] + 1);
-            }
+        int[] arr = new int[n / 5 + 1];
+        for (int i = 0; i < arr.length; i++) {
+        	int ans = i;
+        	int num = n;
+        	num -= (5 * i);
+        	ans += (num / 2);
+        	if (num % 2 != 0) {
+        		arr[i] = Integer.MAX_VALUE;
+        	} else {
+        		arr[i] = ans;
+        	}
         }
+        Arrays.sort(arr);
 
-        if (dp[n] == INF) {
-            System.out.println(-1);
-        } else {
-            System.out.println(dp[n]);
-        }
+        System.out.println(arr[0] == Integer.MAX_VALUE ? -1 : arr[0]);
+        
         sc.close();
     }
 }
