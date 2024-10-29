@@ -12,7 +12,17 @@ public class Main {
 		
 		@Override
 		public int compareTo(Pair p) {
-			return (this.x + this.y) - (p.x + p.y);
+			int num = (this.x + this.y) - (p.x + p.y);
+			if (num == 0) {
+				if (this.x == p.x) {
+					if (this.y < p.y) { return -1; } else { return 1; }
+				} else if (this.x < p.x) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}
+			return num; 
 		}
 		
 		
@@ -36,6 +46,8 @@ public class Main {
 		for (int i = 0; i < m; i++) {
 			Pair pair = pq.poll();
 			pq.add(new Pair(pair.x + 2, pair.y + 2));
+			
+			
 		}
 		Pair pair = pq.peek();
 		System.out.println(pair.x + " " + pair.y);
