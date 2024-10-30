@@ -1,14 +1,11 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.TreeMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int INF = (int) 1e9;
         
         int t = Integer.parseInt(br.readLine().trim());
         
@@ -21,28 +18,38 @@ public class Main {
                 array[i] = Integer.parseInt(inputArray[i]);
             }
 
-            TreeMap<Integer, Integer> sortedMap = new TreeMap<>();
-            sortedMap.put(array[0], 1);
+            TreeSet<Element> sortedSet = new TreeSet<>();
+            sortedSet.add(new Element(array[0], 0));
             System.out.print(array[0] + " ");
             
             for (int i = 1; i < m; i++) {
-                int current = array[i];
-                Map.Entry<Integer, Integer> upper = sortedMap.ceilingEntry(current + 1);
-                Map.Entry<Integer, Integer> lower = upper == null ? sortedMap.lastEntry() : sortedMap.lowerEntry(current + 1);
-                
-                if (lower != null && lower.getKey() == current) {
-                    sortedMap.put(current, lower.getValue() + 1);
-                } else {
-                    sortedMap.put(current, 1);
-                }
-                
+                sortedSet.add(new Element(array[i], i));
+
                 if (i % 2 == 0) {
-                    int middleIndex = (sortedMap.size() / 2);
-                    int medianValue = sortedMap.keySet().stream().skip(middleIndex).findFirst().orElse(0);
+                    int medianIndex = (sortedSet.size() / 2);
+                    int medianValue = sortedSet.stream().skip(medianIndex).findFirst().get().value;
                     System.out.print(medianValue + " ");
                 }
             }
             System.out.println();
+        }
+    }
+    
+    static class Element implements Comparable<Element> {
+        int value;
+        int index;
+
+        Element(int value, int index) {
+            this.value = value;
+            this.index = index;
+        }
+
+        @Override
+        public int compareTo(Element other) {
+            if (this.value == other.value) {
+                return Integer.compare(this.index, other.index);
+            }
+            return Integer.compare(this.value, other.value);
         }
     }
 }
