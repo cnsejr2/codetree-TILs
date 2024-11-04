@@ -9,23 +9,23 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		int m = sc.nextInt();
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		ArrayList<Long> list = new ArrayList<Long>();
 		for (int i = 0; i < m; i++) {
 			int x = sc.nextInt();
-			int y = sc.nextInt();
+			long y = sc.nextInt();
 			for (int j = 0; j < x; j++) {
 				list.add(y);
 			}
 		}
 		
-		ArrayList<Integer> all = new ArrayList<Integer>();
+		ArrayList<Long> all = new ArrayList<Long>();
 		all.addAll(list); all.addAll(list);
-		int min  = Integer.MAX_VALUE;
+		long min  = Long.MAX_VALUE;
 		for (int i = 0; i < list.size(); i++) {
-			int max = 0;
+			long max = 0;
 			for (int j = 0; j < list.size(); j += 2) {
-				int a = all.get(i + j);
-				int b = all.get(i + j + 1);
+				long a = all.get(i + j);
+				long b = all.get(i + j + 1);
 				
 				max = Math.max(max, a + b);
 			}
