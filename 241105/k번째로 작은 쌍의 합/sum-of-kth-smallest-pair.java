@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -11,25 +12,35 @@ public class Main {
 			int m = sc.nextInt();
 			int k = sc.nextInt();
 			
-			int[] arr = new int[n];
+			int[] arr1 = new int[n];
 			for (int i = 0; i < n; i++) {
-				arr[i] = sc.nextInt();
+				arr1[i] = sc.nextInt();
 			}
+			Arrays.sort(arr1);
 					
-			PriorityQueue<Integer> pq = new PriorityQueue<>();
+			int[] arr2 = new int[m];
 			for (int i = 0; i < m; i++) {
-				int num = sc.nextInt();
-				for (int j = 0; j < n; j++) {
-					pq.add(num + arr[j]);
-				}
-				
+				arr2[i] = sc.nextInt();
 			}
-			int i = 1;
-			while (i < k) {
-				pq.poll();
-				i++;
+			Arrays.sort(arr2);
+			
+			PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> {
+			    return (arr1[a[0]] + arr2[a[1]]) - (arr1[b[0]] + arr2[b[1]]);
+			});
+
+			for(int i = 0; i < n; i++) {
+			    pq.offer(new int[] {i, 0});
 			}
-			System.out.println(pq.poll());
+
+			int[] cur = new int[2];
+			while(k-- > 0) {
+			    cur = pq.poll();
+				if(cur[1] < m - 1)
+			          pq.offer(new int[] {cur[0], cur[1] + 1});
+			};
+
+			System.out.println(arr1[cur[0]] + arr2[cur[1]]);
+			
 			
 			sc.close();
 		
