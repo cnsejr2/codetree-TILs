@@ -1,59 +1,52 @@
-import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.PriorityQueue;
+
+class Pair implements Comparable<Pair> {
+    int absX, x;
+
+    public Pair(int absX, int x) {
+        this.absX = absX;
+        this.x = x;
+    }
+
+    @Override
+    public int compareTo(Pair p) {
+        if(this.absX != p.absX)
+            return this.absX - p.absX;  // |x| 기준 오름차순 정렬
+        else
+            return this.x - p.x;        // |x|가 같다면, x 기준 오름차순 정렬
+    }
+}
 
 public class Main {
-	
-	static class Pair implements Comparable<Pair> {
-	    int num, idx;
+    // 변수 선언:
+    public static int n;
+    
+    public static PriorityQueue<Pair> pq = new PriorityQueue<>();
 
-	    public Pair(int num, int idx) {
-	        this.num = num;
-	        this.idx = idx;
-	    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // 입력:
+        n = sc.nextInt();
 
-	    @Override
-	    public int compareTo(Pair t) {
-	    	if (this.num == t.num) {
-	    		return this.idx - t.idx;
-	    	} else {
-	    		return this.num - t.num;
-	    	}
-	    }
-	}
+        for(int i = 0; i < n; i++) {
+            int x = sc.nextInt();
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		
-		int n = sc.nextInt();
-		PriorityQueue<Pair> pq = new PriorityQueue<>();
-		
-		for (int i = 0; i < n; i++) {
-			int num = sc.nextInt();
-			if (num == 0) {
-				if(!pq.isEmpty()) {
-					while (!pq.isEmpty()) {
-						Pair cur = pq.poll();
-						if (cur.idx == 0) {
-							cur.num *= -1;
-						}
-						System.out.println(cur.num);
-					}
-					System.out.println(0);
-				}
-			} else {
-				if (num < 0) {
-					pq.add(new Pair(num * -1, 0));
-				} else {
-					pq.add(new Pair(num, 1));
-				}	
-			}
-		}
-
-	
-		
-		sc.close();
-
-	}
-
+            // x가 0이 아니라면
+            // 우선순위 큐에 넣어줍니다. 
+            // (|x|, x) 형태로 넣어줍니다.
+            if(x != 0)
+                pq.add(new Pair(Math.abs(x), x));
+            // x가 0이라면
+            // 가장 앞에 있는 원소를 출력해주고 제거합니다.
+            else {
+                // 우선순위 큐가 비어져 있다면 0을 출력하고 넘어갑니다.
+                if(pq.isEmpty()) {
+                    System.out.println(0);
+                    continue;
+                }
+                System.out.println(pq.poll().x);
+            }
+        }
+    }
 }
