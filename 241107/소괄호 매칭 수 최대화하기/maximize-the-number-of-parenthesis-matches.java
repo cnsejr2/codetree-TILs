@@ -3,6 +3,19 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
+	
+	public static long check(String result) {
+		Long answer = 0L;
+		Long count = 0L;
+		for (int i = 0; i < result.length(); i++) {
+			if (result.charAt(i) == '(') {
+				count++;
+			} else {
+				answer += count;
+			}
+		}
+		return answer;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -21,29 +34,19 @@ public class Main {
 			@Override
 			public int compare(String o1, String o2) {
 				// TODO Auto-generated method stub
-				String n1 = o1 + o2;
-				String n2 = o2 + o1;
+				Long c1 = check(o1 + o2);
+				Long c2 = check(o2 + o1);
 				
-				return n1.compareTo(n2);
+				if (c1 < c2) { return 1; }
+				else if (c1 > c2) { return -1; }
+				else { return 0; }
 			}
         });
 		
-		String result = String.join("", arr);
-		int answer = 0;
-		int count = 0;
-		for (int i = 0; i < result.length(); i++) {
-			if (result.charAt(i) == '(') {
-				count++;
-			} else {
-				answer += count;
-			}
-		}
-		System.out.println(answer);
 		
-		
-		
+		System.out.println(check(String.join("", arr)));
+
 		sc.close();
-		
 
 	}
 
