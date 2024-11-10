@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class Main {
@@ -22,8 +23,9 @@ public class Main {
 				map.put(arr[j], map.getOrDefault(arr[j], 0) + 1);
 				j++;
 			}
-			
+
 			ans = Math.max(ans, j - i);
+			map.put(arr[i], map.get(arr[i]) - 1);
 		}
 		System.out.println(ans);
 		
