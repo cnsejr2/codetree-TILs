@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -8,17 +9,17 @@ public class Main {
 		int n = sc.nextInt();
 		int k = sc.nextInt();
 		
-		int[] count = new int[26];
-		int[] arr = new int[n];
+		HashMap<Long, Integer> map = new HashMap<>();
+		Long[] arr = new Long[n];
 		
 		for (int i = 0; i < n; i++) {
-			arr[i] = sc.nextInt();
+			arr[i] = sc.nextLong();
 		}
 		int j = 0;
 		int ans = 0;
 		for (int i = 0; i < n; i++) {
-			while (j < n && count[arr[j]] < k) {
-				count[arr[j]]++;
+			while (j < n && map.getOrDefault(arr[j], 0) < k) {
+				map.put(arr[j], map.getOrDefault(arr[j], 0) + 1);
 				j++;
 			}
 			
