@@ -17,13 +17,13 @@ public class Main {
 		Long min = Long.MAX_VALUE;
 		int e = n - 1;
 		for (int i = 0; i < n; i++) {
-			while (e != 0 && Math.abs(arr[i] + arr[e]) > min) {
+			if (i < e) {
+				min = Math.min(min, Math.abs(arr[i] + arr[e]));
+			}
+			while (e - i > i && arr[i] + arr[e] > 0) {
 				e--;
+				min = Math.min(min, Math.abs(arr[i] + arr[e]));
 			}
-			if (e <= i) {
-				break;
-			}
-			min = Math.abs(arr[i] + arr[e]);
 		}
  		
 		System.out.println(min);
