@@ -20,7 +20,7 @@ public class Main {
 			if (i < e) {
 				min = Math.min(min, Math.abs(arr[i] + arr[e]));
 			}
-			while (e - i > i && arr[i] + arr[e] > 0) {
+			while (e - 1 > i && arr[i] + arr[e] > 0) {
 				e--;
 				min = Math.min(min, Math.abs(arr[i] + arr[e]));
 			}
