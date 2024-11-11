@@ -17,28 +17,27 @@ public class Main {
 			map[arr[i]]++;
 		}
 		
-		int ans = 0;
+		int ans = Integer.MAX_VALUE;
 		int j = 1;
+		int count = 0;
 		for (int i = 1; i <= n; i++) {
 			while (j <= n && cnt[arr[j]] < map[arr[j]] - 1) {
+				if (cnt[arr[j]] == 0) {
+					count++;
+				}
 				cnt[arr[j]]++;
 				j++;
 			}
-			
-			int count = 0;
-			for (int k = 1; k <= m; k++) {
-				if (cnt[k] > 0 && map[k] - cnt[k] > 0) {
-					count++;
-				}
-			}
-
 			if (count == m) {
-				ans = Math.max(ans, j - i);
+				ans = Math.min(ans, j - i);	
 			}
 			
 			cnt[arr[i]]--;
+			if (cnt[arr[i]] == 0) {
+				count--;
+			}
 		}
-		System.out.println(ans == 0 ? -1 : ans);
+		System.out.println(ans == Integer.MAX_VALUE ? -1 : ans);
 		
 		
 		sc.close();
