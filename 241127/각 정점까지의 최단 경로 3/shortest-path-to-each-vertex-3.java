@@ -22,7 +22,7 @@ public class Main {
 		}
 		
 		for (int i = 1; i <= n; i++) {
-			dist[i] = Integer.MAX_VALUE;
+			dist[i] = (int) 1e9;
 		}
 		
 		dist[1] = 0;
@@ -47,7 +47,7 @@ public class Main {
 			}
 		}
 		for (int i = 2; i <= n; i++) {
-			System.out.println(dist[i] == Integer.MAX_VALUE ? -1 : dist[i]);
+			System.out.println(dist[i] == (int) 1e9 ? -1 : dist[i]);
 		}
 		
 		
