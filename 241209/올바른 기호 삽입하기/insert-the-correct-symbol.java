@@ -19,9 +19,11 @@ public class Main {
                 if (dp[i - 1][j] > 0) {
                     if (j + arr[i] <= 20) {
                         dp[i][j + arr[i]] += dp[i - 1][j];
+                        dp[i][j + arr[i]] %= 1000000007;
                     }
                     if (j - arr[i] >= 0) {
                         dp[i][j - arr[i]] += dp[i - 1][j];
+                        dp[i][j - arr[i]] %= 1000000007;
                     }
                 }
             }
