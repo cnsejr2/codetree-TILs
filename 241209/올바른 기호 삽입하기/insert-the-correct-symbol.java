@@ -1,39 +1,33 @@
 import java.util.Scanner;
 
 public class Main {
-    static int[] arr; 
-    static int n;
-    static int ans = 0; 
-
-    private static void dfs(int index, int sum) {
-        if (index == n - 1) {
-            if (sum == arr[n]) {
-                ans++;
-            }
-            return;
-        }
-
-        if (sum + arr[index + 1] <= 20) {
-            dfs(index + 1, sum + arr[index + 1]);
-        }
-
-        if (sum - arr[index + 1] >= 0) {
-            dfs(index + 1, sum - arr[index + 1]);
-        }
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        n = sc.nextInt(); 
-        arr = new int[n + 1]; 
+        int n = sc.nextInt();
+        int[] arr = new int[n + 1];
 
         for (int i = 1; i <= n; i++) {
             arr[i] = sc.nextInt();
         }
 
-        dfs(1, arr[1]);
+        int[][] dp = new int[n + 1][21];
 
-        System.out.println(ans);
+        dp[1][arr[1]] = 1;
+
+        for (int i = 2; i <= n - 1; i++) { 
+            for (int j = 0; j <= 20; j++) {
+                if (dp[i - 1][j] > 0) {
+                    if (j + arr[i] <= 20) {
+                        dp[i][j + arr[i]] += dp[i - 1][j];
+                    }
+                    if (j - arr[i] >= 0) {
+                        dp[i][j - arr[i]] += dp[i - 1][j];
+                    }
+                }
+            }
+        }
+
+        System.out.println(dp[n - 1][arr[n]]);
         sc.close();
     }
 }
